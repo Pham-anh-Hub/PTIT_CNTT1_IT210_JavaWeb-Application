@@ -1,0 +1,30 @@
+#        Vị trí(dòng, thành phần)                      Loại vấn đề                 Mô tả hậu quả
+----------------------------------------------------------------------------------------------------------------------------
+1      <%! private int requestCounter = 0; %>       Race Condition              Biến dùng chung cho mọi người dùng;
+                                                                                dữ liệu có thể bị sai lệch hoặc
+                                                                                ghi đè khi có nhiều request cùng lúc
+----------------------------------------------------------------------------------------------------------------------------
+2       <%= sv.getScore()%>;                        Syntax Error                Dư dấu ; trong thẻ Expression có thể
+                                                                                gây lỗi biên dịch Java (Internal Server Error 500)
+                                                                                , trang không hiển thị, gây cho người xem nhầm lần.
+----------------------------------------------------------------------------------------------------------------------------
+    Khối logic if...else (Rank)                      Logic in View              Vi phạm mô hình MVC; mã nguồn rối rắm
+3                                                                                , khó bảo trì và không thể tái sử dụng
+                                                                                 logic ở các trang khác.
+----------------------------------------------------------------------------------------------------------------------------
+4        <%= sv.getFullName() %>                    XSS Vulnerability           Không lọc mã độc mà in trực tiếp, nếu trường hợp
+                                                                                chuỗi truyền vào có chứa mã độc,..
+                                                                                ; hacker có thể chèn Script
+                                                                                để đánh cắp Cookie hoặc chiếm quyền
+                                                                                điều khiển trình duyệt.
+----------------------------------------------------------------------------------------------------------------------------
+        <!-- Tiêu đề trang báo cáo -->              HTML Comment                  Đây là chú thích của HTML.
+5                (Dòng 11)                                                        Khi người dùng chuột phải chọn "View Page Source"
+                                                                                , họ sẽ đọc được toàn bộ các ghi chú này.
+                                                                                nên dùng <%-- comment --%> để ẩn code với người dùng.
+
+
+
+
+
+
