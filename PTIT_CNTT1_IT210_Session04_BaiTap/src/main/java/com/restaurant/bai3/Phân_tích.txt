@@ -1,0 +1,18 @@
+Team cần viết một đường dẫn trang web
+để lấy thông tin chi tiết của một đơn hàng cụ thể, ví dụ: Đơn hàng mang ID số 5
+
+Cách A: Dùng URL /bai3/orders/5 kết hợp với @PathVariable.
+    - Số 5 nằm trong URI Path (đường dẫn chính của URL).
+    - Nó là một phần cấu trúc cố định của tài nguyên, không phải tham số bổ sung.
+    -  URL này biểu diễn trực tiếp : đơn hàng có ID = 5
+        - Mang tính định danh mạnh
+
+Cách B: Dùng URL /bai3/orders?id=5 kết hợp với @RequestParam.
+- Số 5 nằm trong Query String (chuỗi truy vấn phía sau dấu ?).
+- Đây là dạng tham số key-value: id=5.
+- URL này mang nghĩa: truy vấn danh sách đơn hàng với điều kiện id = 5.
+    + Thường dùng cho:
+        Lọc dữ liệu (?status=done)
+        Tìm kiếm (?name=abc)
+        Phân trang (?page=1)
+    + Có thể truyền nhiều tham số cùng lúc: VD: /orders?id=5&status=done
